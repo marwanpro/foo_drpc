@@ -1,0 +1,9 @@
+[submodule "pfc"]
+	path = pfc
+	url = https://github.com/marwanpro/pfc
+[submodule "discord-rpc"]
+	path = discord-rpc
+	url = https://github.com/discordapp/discord-rpc
+[submodule "foobar2000-sdk"]
+	path = foobar2000-sdk
+	url = https://github.com/reupen/foobar2000-sdk
