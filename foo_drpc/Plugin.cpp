@@ -1,11 +1,12 @@
 #include <cmath>
+#include <chrono>
 #include "Plugin.h"
 
 
 DECLARE_COMPONENT_VERSION(
 "foo_drpc",
-"0.3",
-"Foobar2000 music status for Discord Rich Presence! (c) 2018 - ultrasn0w");
+"0.4.2.0",
+"Foobar2000 music status for Discord Rich Presence! (c) 2018 - ultrasn0w / Automne von Einzbern");
 
 static initquit_factory_t<foo_drpc> foo_interface;
 static std::chrono::time_point<std::chrono::high_resolution_clock> lastT;
@@ -128,7 +129,7 @@ void foo_drpc::on_playback_new_track(metadb_handle_ptr track)
 
 		if (format.get_length() + 1 <= 128) {
 			static char nya[128];
-			size_t destination_size = sizeof(nya);
+			const size_t destination_size = sizeof(nya);
 			strncpy_s(nya, format.get_ptr(), destination_size);
 			nya[destination_size - 1] = '\0';
 

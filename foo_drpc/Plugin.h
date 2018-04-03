@@ -1,9 +1,8 @@
 #ifndef FOODRPC_PLUGIN_H_
 #define FOODRPC_PLUGIN_H_
 
-#include "../../SDK/foobar2000.h"
-#include "discord-rpc.h"
-#include <chrono>
+#include "../foobar2000-sdk/SDK/foobar2000.h"
+#include "../discord-rpc/include/discord_rpc.h"
 
 class foo_drpc :
 	public initquit,

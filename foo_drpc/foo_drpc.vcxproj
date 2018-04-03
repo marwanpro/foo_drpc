@@ -59,8 +59,8 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\..\shared\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>shared.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../foobar2000-sdk/SDK/Release/foobar2000_SDK;../foobar2000-sdk/shared;../foobar2000-sdk/helpers/Release/foobar2000_sdk_helpers;../discord-rpc/src/Release;$(DotNetSdk_LibraryPath_x86);../foobar2000-sdk/foobar2000_component_client/Release/foobar2000_component_client</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ShLwApi.lib;shared.lib;discord-rpc.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -68,7 +68,7 @@
       <WarningLevel>Level3</WarningLevel>
       <PrecompiledHeader>
       </PrecompiledHeader>
-      <Optimization>MaxSpeed</Optimization>
+      <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;FOO_DRPC_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -82,37 +82,20 @@
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>..\..\shared\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>shared.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../foobar2000-sdk/SDK/Release/foobar2000_SDK;../foobar2000-sdk/shared;../foobar2000-sdk/helpers/Release/foobar2000_sdk_helpers;../discord-rpc/lib/;$(DotNetSdk_LibraryPath_x86);../foobar2000-sdk/foobar2000_component_client/Release/foobar2000_component_client;../pfc/Release</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ShLwApi.lib;discord-rpc.lib;shared.lib;pfc.lib;foobar2000_component_client.lib;foobar2000_sdk_helpers.lib;foobar2000_SDK.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Plugin.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="discord-rpc.h" />
+    <ClInclude Include="..\discord-rpc\include\discord_rpc.h" />
     <ClInclude Include="Plugin.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Plugin.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\foobar2000_component_client\foobar2000_component_client.vcxproj">
-      <Project>{71ad2674-065b-48f5-b8b0-e1f9d3892081}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\helpers\foobar2000_sdk_helpers.vcxproj">
-      <Project>{ee47764e-a202-4f85-a767-abdab4aff35f}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\SDK\foobar2000_SDK.vcxproj">
-      <Project>{e8091321-d79d-4575-86ef-064ea1a4a20d}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\pfc\pfc.vcxproj">
-      <Project>{ebfffb4e-261d-44d3-b89c-957b31a0bf9c}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Library Include="lib\discord-rpc.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
