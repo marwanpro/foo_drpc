@@ -15,7 +15,7 @@ public:
 	DiscordEventHandlers handlers;
 	DiscordRichPresence discordPresence;
 	// Censored on GitHub :)
-	const char* APPLICATION_ID = "ID";
+	const char* APPLICATION_ID = "";
 
 	void on_init();
 	void on_quit();

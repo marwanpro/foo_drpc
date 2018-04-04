@@ -53,7 +53,6 @@ void foo_drpc::on_playback_starting(playback_control::t_track_command command, b
 
 	if (pause)
 	{
-		discordPresence.state = "Paused";
 		discordPresence.smallImageKey = "pause";
 	}
 	else
@@ -66,7 +65,6 @@ void foo_drpc::on_playback_starting(playback_control::t_track_command command, b
 		case playback_control::track_command_resume:
 		case playback_control::track_command_rand:
 		case playback_control::track_command_settrack:
-			discordPresence.state = "Listening";
 			discordPresence.smallImageKey = "play";
 			break;
 		}
@@ -74,11 +72,8 @@ void foo_drpc::on_playback_starting(playback_control::t_track_command command, b
 
 	metadb_handle_ptr track;
 	static_api_ptr_t<playback_control> pbc;
-	if (pbc->get_now_playing(track))
-	{
-		on_playback_new_track(track);
-	}
-	// updateDiscordPresence();
+	if (pbc->get_now_playing(track)) on_playback_new_track(track);
+	updateDiscordPresence();
 }
 
 void foo_drpc::on_playback_stop(playback_control::t_stop_reason reason)
@@ -101,7 +96,6 @@ void foo_drpc::on_playback_pause(bool pause)
 {
 	if (!connected) return;
 
-	discordPresence.state = (pause ? "Paused" : "Listening");
 	discordPresence.smallImageKey = (pause ? "pause" : "play");
 	updateDiscordPresence();
 }
@@ -109,6 +103,8 @@ void foo_drpc::on_playback_pause(bool pause)
 void foo_drpc::on_playback_new_track(metadb_handle_ptr track)
 {
 	if (!connected) return;
+
+	Sleep(1000); // h4xx0r fix
 
 	service_ptr_t<titleformat_object> script1;
 	service_ptr_t<titleformat_object> script2;
@@ -148,7 +144,7 @@ void foo_drpc::on_playback_new_track(metadb_handle_ptr track)
 
 	static char state[128];
 	const size_t destination_size2 = sizeof(state);
-	strncpy_s(state, detailLine.get_ptr(), destination_size2);
+	strncpy_s(state, stateLine.get_ptr(), destination_size2);
 	state[destination_size2 - 1] = '\0';
 						
 	discordPresence.smallImageKey = "play";
@@ -183,6 +179,7 @@ void foo_drpc::initDiscordPresence()
 
 void foo_drpc::updateDiscordPresence()
 {
+	/*
 	if (first) {
 		lastT = std::chrono::high_resolution_clock::now();
 		first = false;
@@ -197,6 +194,8 @@ void foo_drpc::updateDiscordPresence()
 			lastT = std::chrono::high_resolution_clock::now();
 		}
 	}
+	*/
+	Discord_UpdatePresence(&discordPresence);
 #ifdef DISCORD_DISABLE_IO_THREAD
 	Discord_UpdateConnection();
 #endif
