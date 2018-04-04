@@ -45,7 +45,7 @@
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LinkIncremental>false</LinkIncremental>
+    <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -82,7 +82,7 @@
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>../foobar2000-sdk/SDK/Release/foobar2000_SDK;../foobar2000-sdk/shared;../foobar2000-sdk/helpers/Release/foobar2000_sdk_helpers;../discord-rpc/lib/;$(DotNetSdk_LibraryPath_x86);../foobar2000-sdk/foobar2000_component_client/Release/foobar2000_component_client;../pfc/Release</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../foobar2000-sdk/SDK/Release/foobar2000_SDK;../foobar2000-sdk/shared;../foobar2000-sdk/helpers/Release/foobar2000_sdk_helpers;../discord-rpc/lib/;$(DotNetSdk_LibraryPath_x86);../foobar2000-sdk/foobar2000_component_client/Release/foobar2000_component_client;../pfc/Release;../discord-rpc/src/Release</AdditionalLibraryDirectories>
       <AdditionalDependencies>ShLwApi.lib;discord-rpc.lib;shared.lib;pfc.lib;foobar2000_component_client.lib;foobar2000_sdk_helpers.lib;foobar2000_SDK.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
