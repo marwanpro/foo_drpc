@@ -70,6 +70,7 @@ void foo_drpc::on_playback_starting(playback_control::t_track_command command, b
 		}
 	}
 
+	
 	metadb_handle_ptr track;
 	static_api_ptr_t<playback_control> pbc;
 	if (pbc->get_now_playing(track)) on_playback_new_track(track);
@@ -103,8 +104,6 @@ void foo_drpc::on_playback_pause(bool pause)
 void foo_drpc::on_playback_new_track(metadb_handle_ptr track)
 {
 	if (!connected) return;
-
-	Sleep(1000); // h4xx0r fix
 
 	service_ptr_t<titleformat_object> script1;
 	service_ptr_t<titleformat_object> script2;
